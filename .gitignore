@@ -1,0 +1,12 @@
+*.sdf
+*.pdb
+*.tlog
+*.obj
+*.idb
+*.suo
+*.ilk
+*.cache
+*.filters
+*.log
+*.ipch
+*.manifest
