@@ -233,6 +233,9 @@ void ThreadFunc(const int t_i, const set<PrintClass*> &sPrintClass, const set<Pr
 	mtx.unlock();
 }
 
+#include <iterator>     // std::advance
+
+
 int main()
 {
 	time_t start, stop;
@@ -259,8 +262,9 @@ int main()
 	//thread 0 ~ thread_number-1
 	set<PrintClass*>::iterator start_it = sPrintClass.begin();
 	set<PrintClass*>::iterator end_it = sPrintClass.begin();
-	for (int j = 0; j < tasksPerThread; j++)
-		end_it++;
+	/*for (int j = 0; j < tasksPerThread; j++)
+		end_it++;*/
+	std::advance(end_it, tasksPerThread);
 
 	for (int i = 0; i < thread_number - 1; i++)
 	{
@@ -268,10 +272,12 @@ int main()
 
 		thread* temp = new thread(ThreadFunc, i, sPrintClass, start_it, end_it);
 		v_tThreads.push_back(temp);
-		for (int j = 0; j < tasksPerThread; j++)
-			start_it++;
-		for (int j = 0; j < tasksPerThread; j++)
-			end_it++;
+		/*for (int j = 0; j < tasksPerThread; j++)
+			start_it++;*/
+		std::advance(start_it, tasksPerThread);
+		/*for (int j = 0; j < tasksPerThread; j++)
+			end_it++;*/
+		std::advance(end_it, tasksPerThread);
 	}
 	//thread thread_number (lask thread)
 	{
