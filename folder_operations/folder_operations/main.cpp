@@ -1,4 +1,6 @@
 //使用多字节字符集
+//关于文件夹操作 应该可以全部用 shfileoperation 来解决
+//FO_COPY FO_DELETE FO_MOVE FO_RENAME
 
 #ifdef WIN32
 	#include <windows.h>
@@ -28,7 +30,7 @@ bool CopyDirectoryFunc(std::string destDir, std::string srcDir)
 	//return RemoveDirectory(dir.c_str());
 	SHFILEOPSTRUCT fop;
 	ZeroMemory(&fop, sizeof fop);
-	fop.wFunc = FO_COPY;
+	fop.wFunc = FO_COPY; //FO_COPY FO_DELETE FO_MOVE FO_RENAME
 	fop.pFrom = srcDir.c_str();// "c:\\a\0";
 	fop.pTo = destDir.c_str();// "c:\\b\0";
 
