@@ -30,9 +30,9 @@ public:
 };
 
 
-//Singelton* Singelton::instance;  //or?
-//Singelton* Singelton::instance = nullptr;  //or?
-Singelton* Singelton::m_instance = new Singelton();
+Singelton* Singelton::m_instance;  //works
+//Singelton* Singelton::m_instance = nullptr;  //works
+//Singelton* Singelton::m_instance = new Singelton(); //works
 
 
 
