@@ -1,3 +1,5 @@
+//http://blog.csdn.net/chollima/article/details/3985570
+
 class Product
 {
 
