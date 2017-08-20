@@ -90,6 +90,8 @@ public:
 
 Product* simple_factory::CreateProduct(int numb)
 {
+	//缺点：每次添加一个产品子类都必须在工厂类中添加一个判断分支，这样违背了 开放-封闭原则 
+	//==> 催生了 工厂模式
 	if (numb == 0)
 	{
 		return new Product0();
@@ -117,7 +119,6 @@ bool ReadCreateConfig(string xmlConfigFile, vector<Product*> &vecProduct)
 	rapidxml::xml_node<>* xmlNode = xmlRoot->first_node("product");
 	string productString(xmlNode->value());
 	int productInt = stoi(productString);
-
 	vecProduct.push_back(simple_factory::CreateProduct(productInt));
 
 	//first level child END

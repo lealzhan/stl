@@ -10,3 +10,5 @@
 *.log
 *.ipch
 *.manifest
+*.exe
+*.opensdf
