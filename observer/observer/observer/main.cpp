@@ -7,6 +7,7 @@
 using namespace std;
 /////////////////////抽象模式定义
 class CObservable;
+
 //观察者，纯虚基类
 class CObserver
 {
@@ -17,6 +18,7 @@ public:
 	//来自被观察者pObs, 扩展参数为pArg
 	virtual void Update(CObservable* pObs, void* pArg = NULL) = 0;
 };
+
 //被观察者，即Subject
 class CObservable
 {
@@ -36,6 +38,7 @@ private:
 	bool m_bChanged;                //状态
 	set<CObserver*> m_setObs;       //set保证目标唯一性
 };
+
 /////////////////////抽象模式实现
 void CObservable::Attach(CObserver* pObs){
 	if (!pObs) return;
